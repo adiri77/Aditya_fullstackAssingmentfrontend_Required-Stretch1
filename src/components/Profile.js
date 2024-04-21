@@ -9,7 +9,7 @@ const Profile = ({ profile, onDelete }) => {
 
   const handleDelete = async () => {
     try {
-     await axios.delete(`http://localhost:5000/api/profiles/${profile._id}`);
+     await axios.delete(`https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/profiles/${profile._id}`);
       onDelete(profile._id);
       
       
