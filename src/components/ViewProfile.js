@@ -12,7 +12,7 @@ const ViewProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/profiles/${id}`);
+        const response = await axios.get(`https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/profiles/${id}`);
         setProfile(response.data);
         setLoading(false);
       } catch (error) {
