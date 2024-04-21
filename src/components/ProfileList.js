@@ -14,8 +14,8 @@ const ProfileList = () => {
   const fetchProfiles = async () => {
     try {
       const url = searchTerm.trim()
-        ? `http://localhost:5000/api/profiles/search?search=${encodeURIComponent(searchTerm)}&sort=${sortKey}`
-        : `http://localhost:5000/api/profiles?sort=${sortKey}`;
+        ? `https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/profiles/search?search=${encodeURIComponent(searchTerm)}&sort=${sortKey}`
+        : `https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/profiles?sort=${sortKey}`;
       const response = await axios.get(url);
       setProfiles(response.data);
     } catch (error) {
@@ -37,7 +37,7 @@ const ProfileList = () => {
     setProfiles(updatedProfiles);
   // console.log(profileId,"++++++++++++++++++++++++++++++++++++++------------------------+");
   //   try {
-  //     await axios.delete(`http://localhost:5000/api/profiles/${profileId}`);
+  //     await axios.delete(`https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/profiles/${profileId}`);
   //   } catch (error) {
   //     console.error('Error deleting profile:', error);
   //     // If deletion fails, add the profile back to the state
