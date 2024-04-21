@@ -48,7 +48,7 @@ const SignUp = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:5000/api/signup', {
+      const response = await axios.post('https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/signup', {
           ...formData,
           techStack: formData.techStack.filter((tech) => tech !== '')
       });
@@ -56,7 +56,7 @@ const SignUp = () => {
           login(response.data.token, response.data.userId); 
           navigate('/');
       }
-      await axios.post('http://localhost:5000/api/register', {
+      await axios.post('https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/register', {
         email: formData.email,
         password: formData.password, // Consider encrypting the password or handling it securely
       });
