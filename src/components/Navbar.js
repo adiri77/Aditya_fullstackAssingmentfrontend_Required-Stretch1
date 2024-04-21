@@ -40,6 +40,10 @@ const Navbar = () => {
                             <Link className="nav-link" to="/signup">Sign Up</Link>
                         </li>
                     )}
+ {!isAuthenticated && (
+                    <li className="nav-item">
+                         <Link className="btn btn-outline-success my-2 my-sm-0" to="/login">Log In</Link>
+                     </li>)}
                 </ul>
             </div>
         </nav>
