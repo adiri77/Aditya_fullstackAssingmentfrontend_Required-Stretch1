@@ -44,31 +44,30 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.passwordConfirmation) {
-        alert('Passwords do not match!');
-        return;
+      alert('Passwords do not match!');
+      return;
     }
     try {
-
-      console.log({
-        ...formData,
-        techStack: formData.techStack.filter(tech => tech !== '')
-    });
-    
-        const response = await axios.post('https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/signup', {
-            ...formData,
-            techStack: formData.techStack.filter((tech) => tech !== '')
-        });
-        
-        if (response.data.token && response.data.userId) {
-            login(response.data.token, response.data.userId); // login using the token and userId
-            navigate('/');
-            console.log("gcgjchgcjhcjchjhhvh67547645764") // Navigate to profiles page after successful signup
-        }
+      const response = await axios.post('http://localhost:5000/api/signup', {
+          ...formData,
+          techStack: formData.techStack.filter((tech) => tech !== '')
+      });
+      if (response.data.token && response.data.userId) {
+          login(response.data.token, response.data.userId); 
+          navigate('/');
+      }
+      await axios.post('http://localhost:5000/api/register', {
+        email: formData.email,
+        password: formData.password, // Consider encrypting the password or handling it securely
+      });
     } catch (error) {
+      if (error.response && error.response.status === 400) {
+        alert(error.response.data.message); // Show error message from backend
+      } else {
         console.error('Error creating profile:', error);
+      }
     }
   };
-
   // Remainder of the component (form inputs, etc.) remains unchanged
   return (
     <div className="container mt-4">
