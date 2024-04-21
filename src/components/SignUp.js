@@ -54,7 +54,7 @@ const SignUp = () => {
         techStack: formData.techStack.filter(tech => tech !== '')
     });
     
-        const response = await axios.post('http://localhost:5000/api/signup', {
+        const response = await axios.post('https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/signup', {
             ...formData,
             techStack: formData.techStack.filter((tech) => tech !== '')
         });
