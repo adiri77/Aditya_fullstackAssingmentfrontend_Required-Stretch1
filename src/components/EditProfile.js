@@ -23,7 +23,7 @@ const EditProfile = () => {
     const fetchProfile = async () => {
       setLoading(true);
       try {
-          const { data } = await axios.get(`http://localhost:5000/api/profiles/${id}`);
+          const { data } = await axios.get(`https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/profiles/${id}`);
           setFormData({
               name: data.name,
               email: data.email,
