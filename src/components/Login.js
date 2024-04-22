@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // Ensure you create a corresponding CSS file for styling
+import { useAuth } from '../components/AuthContext';
+import './Login.css'  // Ensure the path is correct
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const handleLogin = async (event) => {
+// Login.js
+const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/login', { email, password });
-      alert('Login successful!');
-      navigate('/'); // Redirect to a dashboard or another appropriate route
+      const response = await axios.post('http://localhost:5000/api/login', { email, password });
+      if (response.data) {
+        login(response.data.token, response.data.userId); // Store userId
+        navigate('/'); // Redirect after login
+      }
     } catch (error) {
-      setError('Failed to login. Please check your credentials.');
+      if (error.response) {
+        setError('Failed to login. Please check your credentials.');
+      } else {
+        console.error('Login error:', error);
+        setError('An unexpected error occurred. Please try again.');
+      }
     }
   };
+  
 
   return (
     <div className="login-container">
