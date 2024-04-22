@@ -23,7 +23,7 @@ const EditProfile = () => {
     const fetchProfile = async () => {
       setLoading(true);
       try {
-          const { data } = await axios.get(`http://localhost:5000/api/profiles/${id}`);
+          const { data } = await axios.get(`https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/profiles/${id}`);
           setFormData({
               name: data.name,
               email: data.email,
@@ -66,7 +66,7 @@ const EditProfile = () => {
         techStack: formData.techStack.split(',').map(item => item.trim()),
       };
       // Send the PATCH request to the backend
-      await axios.patch(`http://localhost:5000/api/profiles/${id}`, updateData);
+      await axios.patch(`https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/profiles/${id}`, updateData);
       navigate('/'); // Navigate away after successful update
       setLoading(false);
     } catch (err) {
