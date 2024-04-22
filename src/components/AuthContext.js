@@ -17,10 +17,12 @@ export const AuthProvider = ({ children }) => {
         }
     }, []);
 
-    const login = (token, user) => {
+      const login = (token, user, userId) => {  // Add userId parameter
         localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user)); // Storing user data as a JSON string
-        setAuthState({ isAuthenticated: true, user, token });
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('userId', userId);  // Store userId in local storage
+        setAuthState({ isAuthenticated: true, user, token, userId });
+        console.log(user,"++++++++++++++++++++^^^^^^^^^^^^^^^^^^^^");
     };
 
     const logout = () => {
