@@ -15,7 +15,7 @@ const Login = () => {
 const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/login', { email, password });
+      const response = await axios.post('https://aditya-fullstackassingmentbackend-os9x.onrender.com/api/login', { email, password });
       if (response.data) {
         login(response.data.token, response.data.userId); // Store userId
         navigate('/'); // Redirect after login
