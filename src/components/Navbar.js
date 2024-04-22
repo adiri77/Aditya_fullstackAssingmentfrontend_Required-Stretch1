@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';// Ensure this path is correct
 
 const Navbar = () => {
     const { isAuthenticated, user, logout } = useAuth(); 
+    
     console.log(user,"hadfcjjvjvjsvjsvdvjd");// Now using user object
     const navigate = useNavigate();
 
@@ -31,7 +32,7 @@ const Navbar = () => {
                                 <Link className="nav-link" to={`/edit-profile/${user}`}>Edit Profile</Link> {/* Assuming `user.id` is the correct property */}
                             </li>
                             <li className="nav-item">
-                                <button onClick={handleLogout} className="btn btn-outline-success my-2 my-sm-0" type="button">Log out</button>
+                                <button onClick={handleLogout} className="btn btn-outline-danger my-2 my-sm-0" type="button">Log out</button>
                             </li>
                         </>
                     )}
@@ -39,8 +40,9 @@ const Navbar = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/signup">Sign Up</Link>
                         </li>
+                         
                     )}
- {!isAuthenticated && (
+                     {!isAuthenticated && (
                     <li className="nav-item">
                          <Link className="btn btn-outline-success my-2 my-sm-0" to="/login">Log In</Link>
                      </li>)}
